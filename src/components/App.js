@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import {connect} from 'react-redux' 
+import {getInitialData} from '../actions/shared'
 class App extends Component {
+  
+  componentDidMount() {
+    this.props.dispatch(getInitialData());
+  }
   render() {
     return (
       <div className="App">
@@ -16,4 +21,5 @@ class App extends Component {
   }
 }
 
-export default App;
+
+export default connect()(App)
