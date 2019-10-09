@@ -9,9 +9,9 @@ export function getInitialData() {
   return Promise.all([
       _getUsers(),
       _getQuestions()]
-  ).then((data) => {
-    dispatch(receiveUsers(data.users));
-    dispatch(receiveQuestions(data.questions));
+  ).then(([users,questions]) => {
+    dispatch(receiveUsers(users));
+    dispatch(receiveQuestions(questions));
   });
  }
   
