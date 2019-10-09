@@ -1,8 +1,9 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, {Component} from 'react';
+import { NavLink } from 'react-router-dom';
 
-export default function NavBar() {
-    return (
+export default class NavBar extends Component  {
+  render() {  
+  return (
         <nav className='nav'>
             <ul>
                 <li>
@@ -14,11 +15,16 @@ export default function NavBar() {
                 <li>
                     <NavLink to='/leaderboard' exact activeClassName='active'>Leader Board </NavLink>
                 </li>
+    {this.props.loggedIn &&
                 <li>
                     <NavLink to='/logout' exact activeClassName='active'>Logout</NavLink>
-                </li>
+                </li>}
             </ul>
         </nav>
     )
-
+  }
 }
+
+  
+
+ 

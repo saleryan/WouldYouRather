@@ -1,32 +1,49 @@
 import React, { Component } from 'react';
 import '../index.css';
-import {connect} from 'react-redux' 
-import {getInitialData} from '../actions/shared'
+import { connect } from 'react-redux'
+import { getInitialData } from '../actions/shared'
+import { setAuthUser } from '../actions/authUser';
 import Login from './Login';
-import {Route, BrowserRouter} from 'react-router-dom'
+import { Route, BrowserRouter, Redirect } from 'react-router-dom'
 import NavBar from './NavBar';
+import QuestionList from './QuestionList';
+
 class App extends Component {
+
+    componentDidMount() {
+        this.props.dispatch(getInitialData());
+    }
   
-  componentDidMount() {
-    this.props.dispatch(getInitialData());
-  }
-  
-  render() {
-    return (
-   	  <BrowserRouter>
-      <div>
-      <h3 className="center header"> React App </h3>
-      <NavBar/>
-      <hr />
-      <div className="container center">
-       	<Route path='/' exact component={Login}/>
-      </div>
-	  </div>
-	</BrowserRouter>
-	
-    );
-  }
+    logout = () => {
+    	this.props.dispatch(setAuthUser(null)); 
+        return <Redirect to='/' />
+    }
+
+    render() {
+     const loggedIn=this.props.authUser !== null;
+    
+      return (
+            <BrowserRouter>
+                <div>
+                    <h3 className="center header"> React App </h3>
+                    <NavBar loggedIn={loggedIn} />
+                    <hr />
+                    <div className="container center">
+        			{loggedIn ? <Route path='/' exact component={QuestionList} /> :
+                        <Route path='/' exact component={Login} /> 
+					}
+					<Route path='/logout' render={() => {console.log('logged out'); return this.logout();}} />
+                    </div>
+                </div>
+            </BrowserRouter>
+
+        );
+    }
 }
 
-
-export default connect()(App)
+function mapStateToProps(state) {
+ return {
+ authUser:state.authUser
+ }
+}
+export default connect(mapStateToProps)(App)
