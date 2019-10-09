@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../index.css';
 import {connect} from 'react-redux' 
 import {getInitialData} from '../actions/shared'
+import Login from './Login';
+import {Route, BrowserRouter} from 'react-router-dom'
+import NavBar from './NavBar';
 class App extends Component {
   
   componentDidMount() {
     this.props.dispatch(getInitialData());
   }
+  
   render() {
     return (
-      <div className="App">
-        <div className="App-header">        
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+   	  <BrowserRouter>
+      <div>
+      <h3 className="center header"> React App </h3>
+      <NavBar/>
+      <hr />
+      <div className="container center">
+       	<Route path='/' exact component={Login}/>
       </div>
+	  </div>
+	</BrowserRouter>
+	
     );
   }
 }
