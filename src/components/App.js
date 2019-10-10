@@ -26,11 +26,14 @@ class App extends Component {
             <BrowserRouter>
                 <div>
                     <h3 className="center header"> React App </h3>
-                    <NavBar loggedIn={loggedIn} />
+                    <NavBar loggedInUser={this.props.authUser} />
                     <hr />
                     <div className="container center">
-        			{loggedIn ? <Route path='/' exact component={QuestionList} /> :
-                        <Route path='/' exact component={Login} /> 
+        		
+                   {loggedIn ? <Route path='/' exact component={QuestionList} /> :
+                        <Route path='/' exact>
+                          <Login/>
+                          </Route>
 					}
 					<Route path='/logout' render={() => {console.log('logged out'); return this.logout();}} />
                     </div>
@@ -42,8 +45,9 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
+ const authUser = state.authUser?state.users[state.authUser] : null;
  return {
- authUser:state.authUser
+ 	authUser
  }
 }
 export default connect(mapStateToProps)(App)

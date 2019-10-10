@@ -1,11 +1,26 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Question from './Question';
 
 class QuestionList extends Component {
  render() {
-  return  (<h1> Question List </h1>) ;
- }
+  return  (<ul className="questions">
+           {this.props.questionIds
+           			.map(id => 
+            			<li key={id}> <Question key={id} id={id} /> </li>
+          				)
+           }
+          
+          
+          </ul>) ;
+ 	}
 }
 
+function mapStateToProps(state) {
+ const questionIds = Object.keys(state.questions);
+  return {
+    questionIds
+  }
+}
 
-export default connect()(QuestionList);
+export default connect(mapStateToProps)(QuestionList);

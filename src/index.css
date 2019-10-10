@@ -20,6 +20,11 @@ body {
  margin:0;
 }
 
+li {
+   list-style-type:none;
+   
+}
+
 .select {
    margin: 35px auto;
   padding: 10px;
@@ -64,10 +69,11 @@ body {
   margin:0;
 }
 
-.nav ul li {
+.nav ul li, .nav .user {
  list-style-type:none; 
  padding: 10px 20px;
  text-align: center;
+ display: block;
 }
 
 .nav ul li a {
@@ -80,14 +86,56 @@ body {
 
 }
 
+.nav .user-info {
+  display: flex;
+  align-items: center;
+}
+
+.nav li .avatar {
+  background-size: 100%;
+ width:30px;
+ height: 30px;
+ border-radius: 15px;
+}
+
 .nav ul li a.active {
   background-color: #eee; 
   font-weight: bolder;
   
 }
 
+
 .nav + hr {
  margin: 0;
   padding: 0;
+}
+
+/* Question*/
+
+.card {
+ display: block;
+ border: 2px solid #eee; 
+  margin-bottom: 10px;
+ 
+}
+
+.card-title {
+ background-color: #eee; 
+ padding: 5px;
+ text-align: left;
+  font-weight: bolder;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.avatar {
+ background-size: 100%;
+ width:100px;
+ height: 100px;
+ border-radius: 50px;
 }
 
