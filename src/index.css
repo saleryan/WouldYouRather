@@ -103,13 +103,18 @@ li {
   font-weight: bolder;
   
 }
-
-
 .nav + hr {
  margin: 0;
   padding: 0;
 }
 
+/*QuestionList*/
+.questions {
+ margin:0;
+ width: 100%;
+ padding:0;
+  
+}
 /* Question*/
 
 .card {
