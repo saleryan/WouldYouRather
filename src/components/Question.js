@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 
 class Question extends Component {
  
     render() {
-       const {user} = this.props;
+       const {user, question} = this.props;
         return (<div className="card">
             <div className="card-title">
                <span> {user.name} asks:</span>
@@ -14,7 +15,7 @@ class Question extends Component {
                 <div>
                     Would you rather
 					<span>...</span>
-                    <button className="btn">View Poll</button>
+                     <Link className="btn" to={`/question/${question.id}`}> View Poll </Link>
                 </div>
             </div>
         </div>);

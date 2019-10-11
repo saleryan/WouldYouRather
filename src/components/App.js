@@ -7,6 +7,7 @@ import Login from './Login';
 import { Route, BrowserRouter, Redirect } from 'react-router-dom'
 import NavBar from './NavBar';
 import QuestionList from './QuestionList';
+import QuestionDetail from './QuestionDetail';
 
 class App extends Component {
 
@@ -35,6 +36,7 @@ class App extends Component {
                           <Login/>
                           </Route>
 					}
+					<Route path='/question/:id' component={QuestionDetail} />
 					<Route path='/logout' render={() => {console.log('logged out'); return this.logout();}} />
                     </div>
                 </div>

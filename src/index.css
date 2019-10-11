@@ -4,6 +4,7 @@ body {
   font-family: sans-serif;
 }
 
+
 .container {
 	margin: 0 auto;
 	max-width: 500px;
@@ -37,7 +38,7 @@ li {
   display: block;
   
 }
-.btn {
+.btn, .btn:visited, .btn:active {
   text-transform: uppercase;
   margin: 35px auto;
   padding: 10px;
@@ -48,6 +49,9 @@ li {
   width: 250px;
   position: relative;
   display:block;
+  text-decoration:none;
+  appearance: button;
+  color: #000;
 }
 
 .btn:hover {
@@ -59,6 +63,8 @@ li {
   outline: 0;
   font-weight: 700;
   border-width: 2px;
+  background-color: #eee;
+  text-decoration:none;
 }
 
 /* Navigation */
