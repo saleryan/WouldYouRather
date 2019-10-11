@@ -38,6 +38,9 @@ li {
   display: block;
   
 }
+
+
+
 .btn, .btn:visited, .btn:active {
   text-transform: uppercase;
   margin: 35px auto;
@@ -148,5 +151,10 @@ li {
  width:100px;
  height: 100px;
  border-radius: 50px;
+}
+
+/*Question Detail */
+.detail-form {
+  text-align: left; 
 }
 

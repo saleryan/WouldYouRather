@@ -9,7 +9,8 @@ class Login extends Component {
 
     setAuthUser = (e) => {
         e.preventDefault();
-        this.props.dispatch(setAuthUser(this.state.user));
+        this.props.dispatch(setAuthUser(this.state.user))
+        
     }
 
     handleUser = (e) => {

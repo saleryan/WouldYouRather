@@ -38,8 +38,9 @@ class QuestionList extends Component {
 function mapStateToProps(state) {
     const user = state.users[state.authUser];
 
-    const answered = [...user.questions];
-    const unanswered = [ ...Object.keys(state.questions).filter(question=> answered.indexOf(question)<0)];
+    const answered = [...Object.keys(user.answers)];
+    const unanswered = [ ...Object.keys(state.questions)
+                        .filter(question=> answered.indexOf(question)<0)];
 
     return {
         answered: answered,

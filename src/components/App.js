@@ -21,23 +21,21 @@ class App extends Component {
     }
 
     render() {
-     const loggedIn=this.props.authUser !== null;
+     const {isLoggedIn, authUser} = this.props;
     
       return (
             <BrowserRouter>
                 <div>
                     <h3 className="center header"> React App </h3>
-                    <NavBar loggedInUser={this.props.authUser} />
+                    <NavBar loggedInUser={authUser} />
                     <hr />
                     <div className="container center">
-        		
-                   {loggedIn ? <Route path='/' exact component={QuestionList} /> :
-                        <Route path='/' exact>
-                          <Login/>
-                          </Route>
-					}
-					<Route path='/question/:id' component={QuestionDetail} />
-					<Route path='/logout' render={() => {console.log('logged out'); return this.logout();}} />
+                   
+                    <Route path='/' exact render={()=>isLoggedIn?<QuestionList/>:<Redirect to='/login'/>} /> 
+					<Route path='/question/:id' render={(props)=>isLoggedIn?<QuestionDetail {...props}/>:<Redirect to='/login'/>} /> 
+					<Route path='/logout' render={() => {return this.logout();}} />
+ 					<Route path='/login' render={()=>isLoggedIn?<Redirect to="/"/>:<Login/>} />
+ 				
                     </div>
                 </div>
             </BrowserRouter>
@@ -49,7 +47,8 @@ class App extends Component {
 function mapStateToProps(state) {
  const authUser = state.authUser?state.users[state.authUser] : null;
  return {
- 	authUser
+   	authUser,
+ 	isLoggedIn: !!authUser
  }
 }
 export default connect(mapStateToProps)(App)
