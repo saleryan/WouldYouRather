@@ -38,16 +38,8 @@ class QuestionList extends Component {
 function mapStateToProps(state) {
     const user = state.users[state.authUser];
 
-    const answered = [];
-    const unanswered = [];
-    Object.keys(state.questions)
-        .forEach(questionId => {
-            if (user.answers.hasOwnProperty(questionId)) {
-                answered.push(questionId);
-            } else {
-                unanswered.push(questionId);
-            }
-        });
+    const answered = [...user.questions];
+    const unanswered = [ ...Object.keys(state.questions).filter(question=> answered.indexOf(question)<0)];
 
     return {
         answered: answered,
