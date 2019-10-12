@@ -1,160 +1,266 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+strong {
+    display: block;
+}
 
 .container {
-	margin: 0 auto;
-	max-width: 500px;
-	padding: 10px
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 10px
 }
 
 .center {
- text-align: center; 
+    text-align: center;
 }
 
 .header {
- background-color: #eee; 
- padding:2px;
- margin:0;
+    background-color: #eee;
+    padding: 5px;
 }
 
 li {
-   list-style-type:none;
-   
+    list-style-type: none;
+}
+
+strong {
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .select {
-   margin: 35px auto;
-  padding: 10px;
-  border: 1px solid rgba(0,0,0,.29);
-  cursor: pointer;
-  background: #fff;
-  font-size: 16px;
-  width: 250px;
-  position: relative;
-  display: block;
-  
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, .29);
+    cursor: pointer;
+    background: #fff;
+    font-size: 16px;
+    width: 250px;
+    position: relative;
+    display: block;
 }
 
-
-
 .btn, .btn:visited, .btn:active {
-  text-transform: uppercase;
-  margin: 35px auto;
-  padding: 10px;
-  border: 1px solid rgba(0,0,0,.29);
-  cursor: pointer;
-  background: #fff;
-  font-size: 16px;
-  width: 250px;
-  position: relative;
-  display:block;
-  text-decoration:none;
-  appearance: button;
-  color: #000;
+    text-transform: uppercase;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, .29);
+    cursor: pointer;
+    background: #fff;
+    font-size: 16px;
+    width: 250px;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    appearance: button;
+    color: #000;
 }
 
 .btn:hover {
-  border-color: rgba(0,0,0,.5);
-  text-decoration: none;
+    border-color: rgba(0, 0, 0, .5);
+    text-decoration: none;
 }
 
 .btn:focus {
-  outline: 0;
-  font-weight: 700;
-  border-width: 2px;
-  background-color: #eee;
-  text-decoration:none;
+    outline: 0;
+    font-weight: 700;
+    border-width: 2px;
+    background-color: #eee;
+    text-decoration: none;
 }
 
 /* Navigation */
 
 .nav ul {
- display: flex; 
- justify-content: center;
-  margin:0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
 }
 
 .nav ul li, .nav .user {
- list-style-type:none; 
- padding: 10px 20px;
- text-align: center;
- display: block;
+    list-style-type: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: block;
 }
 
 .nav ul li a {
- text-decoration: none;
- color: black;
- margin: 0;
- padding: 10px 20px;
- display: block;
- min-width: 100px;
-
+    text-decoration: none;
+    color: black;
+    margin: 0;
+    padding: 10px 20px;
+    display: block;
+    min-width: 100px;
 }
 
 .nav .user-info {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .nav li .avatar {
-  background-size: 100%;
- width:30px;
- height: 30px;
- border-radius: 15px;
+    background-size: 100%;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
 }
 
 .nav ul li a.active {
-  background-color: #eee; 
-  font-weight: bolder;
-  
+    background-color: #eee;
+    font-weight: bolder;
 }
-.nav + hr {
- margin: 0;
-  padding: 0;
+
+.nav+hr {
+    margin: 0;
+    padding: 0;
 }
 
 /*QuestionList*/
+
 .questions {
- margin:0;
- width: 100%;
- padding:0;
-  
+    margin: 0;
+    width: 100%;
+    padding: 0;
 }
+
 /* Question*/
 
 .card {
- display: block;
- border: 2px solid #eee; 
-  margin-bottom: 10px;
- 
+    display: block;
+    border: 2px solid #eee;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 .card-title {
- background-color: #eee; 
- padding: 5px;
- text-align: left;
-  font-weight: bolder;
+    background-color: #eee;
+    padding: 10px;
+    text-align: left;
+    font-weight: bolder;
 }
 
 .card-body {
-  display: flex;
-  justify-content: space-around;
-  padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
 }
 
 .avatar {
- background-size: 100%;
- width:100px;
- height: 100px;
- border-radius: 50px;
+    background-size: 100%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    align-self: center;
+}
+
+.text-ellipsis {
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
 }
 
 /*Question Detail */
+
 .detail-form {
-  text-align: left; 
+    text-align: left;
 }
 
+input[type=radio]+span::after {
+    display: block;
+    content: ' ';
+    padding: 3px 0;
+}
+
+.results-info {
+    text-align: left;
+    width: 250px;
+}
+
+.progress-bar {
+    border: 1px solid #ccc!important;
+    height: 25px;
+    margin: 10px 0;
+}
+
+.progress-bar>div {
+    background-color: #766b1c;
+    height: 100%;
+}
+
+.result {
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 100px;
+    position: relative;
+}
+
+.results-info h3 {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.voted {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    font-size: 12px;
+    color: #fff;
+    width: 40px;
+    border-radius: 30px;
+    height: 40px;
+    text-align: center;
+    padding: 8px 0;
+    box-sizing: border-box;
+    background-color: #ec0;
+    font-weight: bold;
+}
