@@ -19,8 +19,8 @@ class QuestionList extends Component {
 
         return (<div>
             <div style={{ display: "flex" }}>
-                <button className="btn" autoFocus onClick={this.setToUnAnswered}>Unanswered Questions </button>
-                <button className="btn" onClick={this.setToAnswered}>Answered Questions </button>
+                <a className={!this.state.setToAnswered?"btn active":"btn"}  onClick={this.setToUnAnswered}>Unanswered Questions </a>
+                <a className={this.state.setToAnswered?"btn active":"btn"}  onClick={this.setToAnswered}>Answered Questions </a>
             </div>
             <ul className="questions">
                 {this.state.setToAnswered && this.props.answered

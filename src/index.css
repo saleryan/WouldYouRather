@@ -129,6 +129,12 @@ strong {
     text-decoration: none;
 }
 
+.btn:disabled{
+    background-color: #eee;
+    color: #fff;
+    font-style: italic;
+}
+
 /* Navigation */
 
 .nav ul {
@@ -181,6 +187,14 @@ strong {
     margin: 0;
     width: 100%;
     padding: 0;
+}
+
+a.btn.active {
+   outline: 0;
+    font-weight: 700;
+    border-width: 2px;
+    background-color: #eee;
+    text-decoration: none;
 }
 
 /* Question*/

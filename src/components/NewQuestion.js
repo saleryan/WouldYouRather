@@ -27,6 +27,10 @@ class NewQuestion extends Component {
         });
     }
 
+ disabled = () => {
+     return !(this.state.optionOne && this.state.optionTwo);
+   }
+
     render() {
         if (this.state.toHome === true) {
             return <Redirect to='/' />
@@ -40,7 +44,7 @@ class NewQuestion extends Component {
                     <input type="text" value={this.state.optionOne} name="optionOne" placeholder="Enter Option One Text Here" onChange={this.handleChange} />
                     <span className="border-center"> or </span>
                     <input type="text" value={this.state.optionTwo} name="optionTwo" placeholder="Enter Option Two Text Here" onChange={this.handleChange} />
-                    <button className="btn" type="submit">Submit</button>
+                    <button disabled={this.disabled()} className="btn" type="submit">Submit</button>
                 </div>
             </form>
         )

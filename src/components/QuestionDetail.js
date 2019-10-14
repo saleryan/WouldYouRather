@@ -4,13 +4,17 @@ import { saveAnswer } from '../actions/shared'
 
 class QuestionDetail extends Component {
     state = {
-        value: this.props.optionOne
+        value: ''
     }
     answerQuestion = (e) => {
         e.preventDefault();
         this.props.dispatch(saveAnswer(this.props.authUserId, this.props.questionId, this.state.value));
 
     }
+
+   disabled = () => {
+     return !this.state.value
+   }
     handleChange = (e) => {
         const value = e.target.value;
         this.setState({ value: value });
@@ -39,7 +43,7 @@ class QuestionDetail extends Component {
 
                         <input type="radio" name="answer" id="optionTwo" value="optionTwo" onChange={this.handleChange} />
                         <span>{optionTwo.text}</span>
-                        <button className="btn" type="submit">Submit</button>
+                        <button className="btn" type="submit" disabled={this.disabled()}>Submit</button>
                     </form>
                 </div> :
                     <div className="results-info">
