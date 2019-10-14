@@ -8,6 +8,7 @@ import { Route, BrowserRouter, Redirect } from 'react-router-dom'
 import NavBar from './NavBar';
 import QuestionList from './QuestionList';
 import QuestionDetail from './QuestionDetail';
+import NewQuestion from './NewQuestion';
 
 class App extends Component {
 
@@ -35,7 +36,7 @@ class App extends Component {
 					<Route path='/question/:id' render={(props)=>isLoggedIn?<QuestionDetail {...props}/>:<Redirect to='/login'/>} /> 
 					<Route path='/logout' render={() => {return this.logout();}} />
  					<Route path='/login' render={()=>isLoggedIn?<Redirect to="/"/>:<Login/>} />
- 				
+ 					<Route path='/add' render={(props)=>isLoggedIn? <NewQuestion {...props}/>:<Redirect to='/login'/>} /> 
                     </div>
                 </div>
             </BrowserRouter>

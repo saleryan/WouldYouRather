@@ -23,11 +23,11 @@ class QuestionDetail extends Component {
         const optionOneCount = `${optionOne.votes.length} out of ${totalVotes} votes`;
         const optionTwoCount = `${optionTwo.votes.length} out of ${totalVotes} votes`;
 
-        return (<div className="card">
-            <div className="card-title">
+        return (<div className="question">
+            <div className="question-title">
                 <span> {username} asks:</span>
             </div>
-            <div className="card-body">
+            <div className="question-body">
 
                 <div className='avatar' style={{ backgroundImage: `url(${avatarURL})` }}></div>
                 {!answer ? <div>

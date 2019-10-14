@@ -6,11 +6,11 @@ class Question extends Component {
 
     render() {
         const { username, avatarURL, questionId, optionOne } = this.props;
-        return (<div className="card">
-            <div className="card-title">
+        return (<div className="question">
+            <div className="question-title">
                 <span> {username} asks:</span>
             </div>
-            <div className="card-body">
+            <div className="question-body">
                 <div className='avatar' style={{ backgroundImage: `url(${avatarURL})` }}></div>
                 <div>
 
