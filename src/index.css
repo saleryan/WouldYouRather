@@ -6,8 +6,7 @@
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
-    border: 0;  
-    
+    border: 0;
     vertical-align: baseline;
 }
 
@@ -19,8 +18,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 body {
     line-height: 1;
-  	font-size: 1em;
-  	font-family: "san serif", "verdana", "Helvetica"
+    font-size: 1em;
+    font-family: "san serif", "verdana", "Helvetica"
 }
 
 ol, ul {
@@ -28,7 +27,7 @@ ol, ul {
 }
 
 p {
- margin: 0.5em 0; 
+    margin: 0.5em 0;
 }
 
 blockquote, q {
@@ -62,14 +61,15 @@ strong {
 }
 
 input[type=text] {
- padding: 5px;
- border-radius: 5px;
- width: 100%;
- border: 1px solid #eee;
- display: block;
- box-sizing: border-box;
- margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid #eee;
+    display: block;
+    box-sizing: border-box;
+    margin: 5px 0;
 }
+
 .center {
     text-align: center;
 }
@@ -129,7 +129,7 @@ strong {
     text-decoration: none;
 }
 
-.btn:disabled{
+.btn:disabled {
     background-color: #eee;
     color: #fff;
     font-style: italic;
@@ -190,7 +190,7 @@ strong {
 }
 
 a.btn.active {
-   outline: 0;
+    outline: 0;
     font-weight: 700;
     border-width: 2px;
     background-color: #eee;
@@ -294,29 +294,28 @@ input[type=radio]+span::after {
 }
 
 .new-question {
- 	display: block;
+    display: block;
     border: 2px solid #eee;
     margin-bottom: 10px;
     border-radius: 5px;
-  	text-align: left;
+    text-align: left;
 }
 
-.new-question-body {  
-	padding: 5px; 
+.new-question-body {
+    padding: 5px;
 }
 
 .border-center {
     position: relative;
     overflow: hidden;
     text-align: center;
-  	display: block;
-  	text-transform: uppercase;
+    display: block;
+    text-transform: uppercase;
     font-weight: bold;
 }
 
-.border-center::after,
-.border-center::before {
-   position: absolute;
+.border-center::after, .border-center::before {
+    position: absolute;
     top: 51%;
     overflow: hidden;
     width: 50%;
@@ -324,9 +323,20 @@ input[type=radio]+span::after {
     content: '\ a0';
     background-color: #eee;
 }
+
 .border-center::before {
-     margin-left: -50%;
+    margin-left: -50%;
     text-align: right;
 }
-  
-  
+
+/*Leaderboard*/
+
+.leaderboard-item {
+    display: flex;
+    border: 1px solid #eee;
+    margin: 5px 0;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: space-around;
+}
