@@ -4,15 +4,15 @@ import Question from './Question';
 
 class QuestionList extends Component {
     state = {
-        questionIds: this.props.unanswered
+        setToAnswered:false
     }
 
     setToAnswered = () => {
-     this.setState({questionIds: this.props.answered}); 
+     this.setState({setToAnswered: true}); 
     }
 	
 	setToUnAnswered = () => {
-     this.setState({questionIds: this.props.unanswered}); 
+     this.setState({setToAnswered: false}); 
     }
 
     render() {
@@ -23,7 +23,13 @@ class QuestionList extends Component {
                 <button className="btn" onClick={this.setToAnswered}>Answered Questions </button>
             </div>
             <ul className="questions">
-                {this.state.questionIds
+                {this.state.setToAnswered && this.props.answered
+                    .map(id =>
+                        <li key={id}> <Question key={id} id={id} /> </li>
+
+                    )
+                }
+				{!this.state.setToAnswered && this.props.unanswered
                     .map(id =>
                         <li key={id}> <Question key={id} id={id} /> </li>
 

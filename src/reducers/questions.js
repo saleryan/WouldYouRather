@@ -1,5 +1,5 @@
 import {RECEIVE_QUESTIONS} from '../actions/questions';
-import {RECEIVE_ANSWER} from '../actions/shared';
+import {RECEIVE_ANSWER, RECEIVE_QUESTION} from '../actions/shared';
 
 export function questions(state = {}, action) {
  switch(action.type) {
@@ -14,7 +14,10 @@ export function questions(state = {}, action) {
           }
         }
    };
-  
+   case RECEIVE_QUESTION: return {
+    ...state,
+    [action.question.id]: action.question
+   };
    default: return state
  }
 }

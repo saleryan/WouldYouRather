@@ -1,5 +1,5 @@
 import {RECEIVE_USERS} from '../actions/users';
-import {RECEIVE_ANSWER} from '../actions/shared';
+import {RECEIVE_ANSWER, RECEIVE_QUESTION} from '../actions/shared';
 
 
 export function users(state = {}, action) {
@@ -15,6 +15,13 @@ export function users(state = {}, action) {
  	     }
         }
       };
+     case RECEIVE_QUESTION: return {
+    ...state,
+     [action.question.authedUser]: {
+          ...state[action.question.author],
+          questions: state[action.question.author].questions.concat([action.question.id])
+        }
+    };
      default: return state
  }
 }
