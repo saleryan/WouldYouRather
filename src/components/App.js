@@ -9,6 +9,7 @@ import NavBar from './NavBar';
 import QuestionList from './QuestionList';
 import QuestionDetail from './QuestionDetail';
 import NewQuestion from './NewQuestion';
+import Leaderboard from './Leaderboard';
 
 class App extends Component {
 
@@ -37,6 +38,7 @@ class App extends Component {
 					<Route path='/logout' render={() => {return this.logout();}} />
  					<Route path='/login' render={()=>isLoggedIn?<Redirect to="/"/>:<Login/>} />
  					<Route path='/add' render={(props)=>isLoggedIn? <NewQuestion {...props}/>:<Redirect to='/login'/>} /> 
+					<Route path='/leaderboard' render={(props)=>isLoggedIn? <Leaderboard {...props}/>:<Redirect to='/login'/>} /> 
                     </div>
                 </div>
             </BrowserRouter>
