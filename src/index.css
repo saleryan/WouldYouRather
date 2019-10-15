@@ -338,5 +338,51 @@ input[type=radio]+span::after {
     border-radius: 5px;
     padding: 10px;
     box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.score-container {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    flex-grow: 0.12;
+}
+
+.score-title {
+    background-color: #eee;
+    font-weight: bold;
+    height: 25%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.score {
+    margin: 20% auto;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: #766b1c;
+    padding: 5px;
+    box-sizing: border-box;
+    color: #fff
+}
+
+.leaderboard-info {
+    text-align: left;
+    border-left: 1px solid #eee;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    flex-grow: 0.25;
+}
+
+.leaderboard-info-question-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.leaderboard-info-question {
+    margin-left: auto;
 }
