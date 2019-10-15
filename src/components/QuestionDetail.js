@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { saveAnswer } from '../actions/shared'
+import { saveAnswer } from '../actions/shared';
+import { Redirect } from 'react-router-dom';
 
 class QuestionDetail extends Component {
     state = {
@@ -12,20 +13,25 @@ class QuestionDetail extends Component {
 
     }
 
-   disabled = () => {
-     return !this.state.value
-   }
+    disabled = () => {
+        return !this.state.value
+    }
     handleChange = (e) => {
         const value = e.target.value;
         this.setState({ value: value });
     }
 
     render() {
+
+        if (!this.props.questionId) {
+            return <Redirect to="/nomatch" />
+        }
         const { username, avatarURL, optionOne, optionTwo, totalVotes, answer } = this.props;
         const optionOnePercent = parseInt(optionOne.votes.length / totalVotes * 100, 10);
         const optionTwoPercent = parseInt(optionTwo.votes.length / totalVotes * 100, 10);
         const optionOneCount = `${optionOne.votes.length} out of ${totalVotes} votes`;
         const optionTwoCount = `${optionTwo.votes.length} out of ${totalVotes} votes`;
+        const avatarURLCss = `url(${avatarURL})`;
 
         return (<div className="question">
             <div className="question-title">
@@ -33,7 +39,8 @@ class QuestionDetail extends Component {
             </div>
             <div className="question-body">
 
-                <div className='avatar' style={{ backgroundImage: `url(${avatarURL})` }}></div>
+                <div className='avatar' style={{ backgroundImage: avatarURLCss }}></div>
+
                 {!answer ? <div>
                     <form className="detail-form" onSubmit={this.answerQuestion}>
                         <strong>Would you rather ...</strong>
@@ -73,10 +80,18 @@ class QuestionDetail extends Component {
 }
 
 function mapStateToProps(state, props) {
-    const { id } = props.match.params
-    const question = state.questions[id];
-    const user = state.users[question.author];
+
     const authUser = state.users[state.authUser];
+    const { id } = props.match.params;
+    const question = state.questions[id];
+
+    if (!question) {
+        return {
+            authUserId: authUser.id,
+            questionId: null
+        };
+    }
+    const user = state.users[question.author];
     return {
         authUserId: authUser.id,
         username: user.name,

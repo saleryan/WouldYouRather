@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthUser } from '../actions/authUser';
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
     state = {
@@ -9,8 +10,10 @@ class Login extends Component {
 
     setAuthUser = (e) => {
         e.preventDefault();
-        this.props.dispatch(setAuthUser(this.state.user))
-        
+        this.props.dispatch(setAuthUser(this.state.user));
+        const { from } = this.props.location.state || { from: { pathname: "/" } };
+        this.props.history.replace(from);
+
     }
 
     handleUser = (e) => {
@@ -24,7 +27,7 @@ class Login extends Component {
         return (<form onSubmit={this.setAuthUser}>
             <h2> Sign In </h2>
             <select className="select" onChange={this.handleUser}>
-  				<option name="none" key="none" value=""></option>
+                <option name="none" key="none" value=""></option>
                 {users.length > 0 && users.map(user => <option name={user.id} key={user.id} value={user.id}> {user.name} </option>)}
             </select>
             <button className="btn" type="submit">Sign In </button>
@@ -38,4 +41,4 @@ function mapStateToProps(state) {
         users: state.users
     };
 }
-export default connect(mapStateToProps)(Login);
+export default withRouter(connect(mapStateToProps)(Login));

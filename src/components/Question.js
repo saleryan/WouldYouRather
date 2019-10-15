@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-class Question extends Component {
+function Question(props) {
 
-    render() {
-        const { username, avatarURL, questionId, optionOne } = this.props;
-        return (<div className="question">
-            <div className="question-title">
-                <span> {username} asks:</span>
-            </div>
-            <div className="question-body">
-                <div className='avatar' style={{ backgroundImage: `url(${avatarURL})` }}></div>
-                <div>
+    const { username, avatarURL, questionId, optionOne } = props;
+    return (<div className="question">
+        <div className="question-title">
+            <span> {username} asks:</span>
+        </div>
+        <div className="question-body">
+            <div className='avatar' style={{ backgroundImage: `url(${avatarURL})` }}></div>
+            <div>
 
-                    <div className="text-ellipsis">Would you rather {optionOne}?</div>
-                    <Link className="btn" to={`/question/${questionId}`}> View Poll </Link>
-                </div>
+                <div className="text-ellipsis">Would you rather {optionOne}?</div>
+                <Link className="btn" to={`/question/${questionId}`}> View Poll </Link>
             </div>
-        </div>);
-    }
+        </div>
+    </div>);
+
 }
 
 function mapStateToProps(state, { id }) {

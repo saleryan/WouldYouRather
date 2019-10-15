@@ -4,23 +4,23 @@ import Question from './Question';
 
 class QuestionList extends Component {
     state = {
-        setToAnswered:false
+        setToAnswered: false
     }
 
     setToAnswered = () => {
-     this.setState({setToAnswered: true}); 
+        this.setState({ setToAnswered: true });
     }
-	
-	setToUnAnswered = () => {
-     this.setState({setToAnswered: false}); 
+
+    setToUnAnswered = () => {
+        this.setState({ setToAnswered: false });
     }
 
     render() {
 
         return (<div>
             <div style={{ display: "flex" }}>
-                <a className={!this.state.setToAnswered?"btn active":"btn"}  onClick={this.setToUnAnswered}>Unanswered Questions </a>
-                <a className={this.state.setToAnswered?"btn active":"btn"}  onClick={this.setToAnswered}>Answered Questions </a>
+                <a className={!this.state.setToAnswered ? "btn active" : "btn"} onClick={this.setToUnAnswered}>Unanswered Questions </a>
+                <a className={this.state.setToAnswered ? "btn active" : "btn"} onClick={this.setToAnswered}>Answered Questions </a>
             </div>
             <ul className="questions">
                 {this.state.setToAnswered && this.props.answered
@@ -29,14 +29,12 @@ class QuestionList extends Component {
 
                     )
                 }
-				{!this.state.setToAnswered && this.props.unanswered
+                {!this.state.setToAnswered && this.props.unanswered
                     .map(id =>
                         <li key={id}> <Question key={id} id={id} /> </li>
 
                     )
                 }
-
-
             </ul></div>);
     }
 }
@@ -44,9 +42,11 @@ class QuestionList extends Component {
 function mapStateToProps(state) {
     const user = state.users[state.authUser];
 
-    const answered = [...Object.keys(user.answers)];
-    const unanswered = [ ...Object.keys(state.questions)
-                        .filter(question=> answered.indexOf(question)<0)];
+    const answered = [...Object.keys(user.answers)]
+        .sort((a, b) => state.questions[b].timestamp - state.questions[a].timestamp);
+    const unanswered = [...Object.keys(state.questions)
+        .filter(question => answered.indexOf(question) < 0)]
+        .sort((a, b) => state.questions[b].timestamp - state.questions[a].timestamp);
 
     return {
         answered: answered,
