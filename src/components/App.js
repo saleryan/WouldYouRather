@@ -18,6 +18,7 @@ class App extends Component {
         this.props.dispatch(getInitialData());
     }
 
+    /* https://tylermcginnis.com/react-router-protected-routes-authentication */
     PrivateRoute = ({ component: Component, ...rest }) => (
         <Route {...rest} render={({ location, ...props }) => (
             this.props.isLoggedIn
