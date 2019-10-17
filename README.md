@@ -1,7 +1,6 @@
 # WouldYouRather Project
 
-This is the complete project submission for the Udacity's React Fundamentals course.
-
+This is the complete project submission for the Udacity's React Fundamentals course. This app is a react-redux implementation of the game would you rather?
 
 ## Usage
 
