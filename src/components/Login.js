@@ -1,38 +1,40 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAuthUser } from '../actions/authUser';
 import { withRouter } from 'react-router-dom';
 
-class Login extends Component {
-    state = {
-        user: null
-    }
+function Login({ users, location, dispatch, history }) {
 
-    setAuthUser = (e) => {
+    const [user, setUser] = useState(null);
+    
+    const setAuthenticatedUser = (e) => {
         e.preventDefault();
-        this.props.dispatch(setAuthUser(this.state.user));
-        const { from } = this.props.location.state || { from: { pathname: "/" } };
-        this.props.history.replace(from);
-
+        dispatch(setAuthUser(user));
+        const { from } = location.state || { from: { pathname: "/" } };
+        history.replace(from);
     }
 
-    handleUser = (e) => {
+    const handleUser = (e) => {
         const val = e.target.value;
-        this.setState({ user: val });
+        setUser(val);
     }
 
-    render() {
-        const users = Object.keys(this.props.users).map(id => this.props.users[id]);
+    const mappedUsers = Object.keys(users).map(id => users[id]);
 
-        return (<form onSubmit={this.setAuthUser}>
-            <h2> Sign In </h2>
-            <select className="select" onChange={this.handleUser}>
-                <option name="none" key="none" value=""></option>
-                {users.length > 0 && users.map(user => <option name={user.id} key={user.id} value={user.id}> {user.name} </option>)}
-            </select>
-            <button className="btn" type="submit">Sign In </button>
-        </form>)
-    }
+    return (<form onSubmit={setAuthenticatedUser}>
+        <h2> Sign In </h2>
+        <select className="select" onChange={handleUser}>
+            <option name="none" key="none" value=""></option>
+
+            {mappedUsers.length > 0 && mappedUsers.map(user =>
+                <option name={user.id}
+                    key={user.id}
+                    value={user.id}>
+                    {user.name} </option>)}
+        </select>
+        <button className="btn" type="submit">Sign In </button>
+    </form>)
+
 
 }
 

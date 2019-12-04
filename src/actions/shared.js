@@ -1,11 +1,12 @@
-export const GET_INITIAL_DATA = 'GET_INITIAL_DATA';
-export const RECEIVE_ANSWER = "RECEIVE_ANSWER"
-export const RECEIVE_QUESTION = "RECEIVE_QUESTION"
+
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 import { _getUsers, _getQuestions, _saveQuestionAnswer, _saveQuestion } from '../utils/_DATA.js';
 import { receiveUsers } from './users';
 import { receiveQuestions } from './questions';
+export const GET_INITIAL_DATA = 'GET_INITIAL_DATA';
+export const RECEIVE_ANSWER = "RECEIVE_ANSWER"
+export const RECEIVE_QUESTION = "RECEIVE_QUESTION"
 
 export function getInitialData() {
     return (dispatch) => {

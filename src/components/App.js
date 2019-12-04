@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import '../index.css';
 import { connect } from 'react-redux'
 import { getInitialData } from '../actions/shared'
@@ -12,16 +12,19 @@ import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
 import NoMatch from './NoMatch';
 
-class App extends Component {
+function App({ dispatch, isLoggedIn, authUser }) {
 
-    componentDidMount() {
-        this.props.dispatch(getInitialData());
-    }
+    useEffect(() => {
+        dispatch(getInitialData());
+        return () => {
+
+        }
+    }, [dispatch]);
 
     /* https://tylermcginnis.com/react-router-protected-routes-authentication */
-    PrivateRoute = ({ component: Component, ...rest }) => (
+    const PrivateRoute = ({ component: Component, ...rest }) => (
         <Route {...rest} render={({ location, ...props }) => (
-            this.props.isLoggedIn
+            isLoggedIn
                 ? <Component {...props} />
                 : <Redirect to={{
                     pathname: "/login",
@@ -30,37 +33,33 @@ class App extends Component {
         )} />
     )
 
-    logout = () => {
-        this.props.dispatch(setAuthUser(null));
+    const logout = () => {
+        dispatch(setAuthUser(null));
         return <Redirect to='/' />
     }
 
-    render() {
-        const { isLoggedIn, authUser } = this.props;
-        const { PrivateRoute } = this;
-
-        return (
-            <BrowserRouter>
-                <div>
-                    <h3 className="center header"> React App </h3>
-                    <NavBar loggedInUser={authUser} />
-                    <hr />
-                    <div className="container center">
-                        <Switch>
-                            <PrivateRoute exact path="/" component={QuestionList} />
-                            <PrivateRoute path="/question/:id" component={QuestionDetail} />
-                            <Route path='/logout' render={() => { return this.logout(); }} />
-                            <Route path='/login' render={() => isLoggedIn ? <Redirect to="/" /> : <Login />} />
-                            <PrivateRoute path="/add" component={NewQuestion} />
-                            <PrivateRoute path="/leaderboard" component={Leaderboard} />
-                            <Route component={NoMatch} />
-                        </Switch>
-                    </div>
+    return (
+        <BrowserRouter>
+            <div>
+                <h3 className="center header"> React App </h3>
+                <NavBar loggedInUser={authUser} />
+                <hr />
+                <div className="container center">
+                    <Switch>
+                        <PrivateRoute exact path="/" component={QuestionList} />
+                        <PrivateRoute path="/question/:id" component={QuestionDetail} />
+                        <Route path='/logout' render={() => { return logout(); }} />
+                        <Route path='/login' render={() => isLoggedIn ? <Redirect to="/" /> : <Login />} />
+                        <PrivateRoute path="/add" component={NewQuestion} />
+                        <PrivateRoute path="/leaderboard" component={Leaderboard} />
+                        <Route component={NoMatch} />
+                    </Switch>
                 </div>
-            </BrowserRouter>
+            </div>
+        </BrowserRouter>
 
-        );
-    }
+    )
+
 }
 
 function mapStateToProps(state) {

@@ -1,42 +1,45 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
 
-class QuestionList extends Component {
-    state = {
-        setToAnswered: false
+function QuestionList({ answered, unanswered }) {
+  
+    const [isAnswered, setIsAnswered] = useState(false);
+
+    const setToAnswered = () => {
+        setIsAnswered(true);
     }
 
-    setToAnswered = () => {
-        this.setState({ setToAnswered: true });
+    const setToUnAnswered = () => {
+        setIsAnswered(false);
     }
 
-    setToUnAnswered = () => {
-        this.setState({ setToAnswered: false });
-    }
-
-    render() {
-
-        return (<div>
+    return (
+        <div>
             <div style={{ display: "flex" }}>
-                <a className={!this.state.setToAnswered ? "btn active" : "btn"} onClick={this.setToUnAnswered}>Unanswered Questions </a>
-                <a className={this.state.setToAnswered ? "btn active" : "btn"} onClick={this.setToAnswered}>Answered Questions </a>
+                <a className={!isAnswered ? "btn active" : "btn"}
+                    onClick={setToUnAnswered}>Unanswered Questions
+                 </a>
+                <a className={isAnswered ? "btn active" : "btn"}
+                    onClick={setToAnswered}>Answered Questions
+                 </a>
             </div>
+
             <ul className="questions">
-                {this.state.setToAnswered && this.props.answered
+                {isAnswered && answered
                     .map(id =>
                         <li key={id}> <Question key={id} id={id} /> </li>
-
                     )
                 }
-                {!this.state.setToAnswered && this.props.unanswered
+                {!isAnswered && unanswered
                     .map(id =>
                         <li key={id}> <Question key={id} id={id} /> </li>
-
                     )
                 }
-            </ul></div>);
-    }
+            </ul>
+        </div>
+    );
+
 }
 
 function mapStateToProps(state) {
