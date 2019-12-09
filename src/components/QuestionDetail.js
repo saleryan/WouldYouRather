@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { saveAnswer } from '../actions/shared';
+import { saveAnswer } from '../actions';
 import { Redirect } from 'react-router-dom';
 
 function QuestionDetail({ dispatch, authUserId, questionId, username, avatarURL, optionOne, optionTwo, totalVotes, answer }) {

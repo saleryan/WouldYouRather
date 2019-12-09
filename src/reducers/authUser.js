@@ -1,4 +1,4 @@
-import {SET_AUTHUSER} from '../actions/authUser'
+import {SET_AUTHUSER} from '../actions'
 
 
 export function authUser(state = null, action) {

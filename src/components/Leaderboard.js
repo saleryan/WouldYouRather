@@ -2,7 +2,7 @@ import React from 'react';
 import LeaderboardItem from './LeaderboardItem';
 import { connect } from 'react-redux';
 
-function Leaderboard(ids) {
+function Leaderboard({ids}) {
     return (<div>{
         ids.map(id => <LeaderboardItem key={id} id={id} />)
     }</div>)

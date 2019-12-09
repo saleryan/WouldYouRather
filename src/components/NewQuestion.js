@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { saveQuestion } from '../actions/shared';
+import { saveQuestion } from '../actions';
 import { Redirect } from 'react-router-dom'
 
 function NewQuestion({ authUser, dispatch }) {
