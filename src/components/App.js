@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import '../index.css';
-import { connect } from 'react-redux'
 import { getInitialData } from '../actions/shared'
 import { setAuthUser } from '../actions/authUser';
 import Login from './Login';
@@ -11,8 +10,13 @@ import QuestionDetail from './QuestionDetail';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
 import NoMatch from './NoMatch';
+import {useSelector, useDispatch} from 'react-redux';
 
-function App({ dispatch, isLoggedIn, authUser }) {
+function App() {
+    
+    const authUser = useSelector(state => state.authUser ? state.users[state.authUser] : null);
+    const isLoggedIn = !!authUser;
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getInitialData());
@@ -62,11 +66,4 @@ function App({ dispatch, isLoggedIn, authUser }) {
 
 }
 
-function mapStateToProps(state) {
-    const authUser = state.authUser ? state.users[state.authUser] : null;
-    return {
-        authUser,
-        isLoggedIn: !!authUser
-    }
-}
-export default connect(mapStateToProps)(App)
+export default App;

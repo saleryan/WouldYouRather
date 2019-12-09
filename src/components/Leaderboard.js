@@ -2,9 +2,9 @@ import React from 'react';
 import LeaderboardItem from './LeaderboardItem';
 import { connect } from 'react-redux';
 
-function Leaderboard(props) {
+function Leaderboard(ids) {
     return (<div>{
-        props.ids.map(id => <LeaderboardItem key={id} id={id} />)
+        ids.map(id => <LeaderboardItem key={id} id={id} />)
     }</div>)
 
 }

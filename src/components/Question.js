@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-function Question({ username, avatarURL, questionId, optionOne }) {
+const Question= ({ username, avatarURL, questionId, optionOne }) => {
+    console.log(questionId);
     return (<div className="question">
         <div className="question-title">
             <span> {username} asks:</span>
